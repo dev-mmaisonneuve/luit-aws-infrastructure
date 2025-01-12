@@ -41,7 +41,7 @@ resource "aws_security_group" "jenkins_sg" {
   }
 }
 
-# Create the EC2 Instance
+# Create the Jenkins Server
 resource "aws_instance" "jenkins_server" {
   ami           = var.ami # Amazon Linux 2 AMI
   instance_type = var.instance_type
@@ -52,13 +52,27 @@ resource "aws_instance" "jenkins_server" {
   user_data = file("jenkins_install_script.sh")
 
   tags = {
-    Name = "jenkins-server" # Server tag in AWS
+    Name = "jenkins-server" # Tag in AWS
   }
 }
-
 
 # Create the S3 Bucket
 resource "aws_s3_bucket" "jenkins_artifacts" {
   bucket        = var.bucket_name
   force_destroy = true # To allow Bucket Deletion
 }
+
+
+
+
+
+
+/*
+output "instance_id" {
+  value = aws_instance.jenkins_server.id
+}
+
+output "instance_public_ip" {
+  value = aws_instance.jenkins_server.public_ip
+}
+*/
