@@ -1,10 +1,10 @@
 # Configure the AWS Provider
 terraform {
-  # backend "s3" {
-  #   bucket = "ecommerce-appstack-bucket-mm"
-  #   key    = "prod/appstack"
-  #   region = "us-east-1"
-  # }
+  backend "s3" {
+    bucket = "ecommerce-appstack-bucket-mm"
+    key    = "prod/appstack"
+    region = "us-east-1"
+  }
   required_version = ">= 1.0.0"
   required_providers {
     aws = {

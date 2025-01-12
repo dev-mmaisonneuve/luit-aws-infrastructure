@@ -48,7 +48,7 @@ resource "aws_autoscaling_group" "web_asg" {
 resource "aws_security_group" "web_sg" {
   name        = "web-sg"
   description = "Allow HTTP and SSH traffic"
-  vpc_id      = data.aws_vpc.default.id # Replace with your VPC ID
+  vpc_id      = data.aws_vpc.default.id
 
   ingress {
     from_port   = 80
