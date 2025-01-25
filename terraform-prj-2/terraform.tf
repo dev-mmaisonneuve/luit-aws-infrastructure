@@ -24,13 +24,3 @@ terraform {
   }
 }
 */
-
-
-/*
-terraform {
-  backend "s3" {
-    bucket         = "my-terraform-backend-bucket"
-    key            = "terraform/state"
-    region         = "us-east-1" # Replace with your region
-
-*/
