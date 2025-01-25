@@ -171,7 +171,7 @@ resource "aws_instance" "web_2" {
 
 # RDS MySQL Instance in Private Subnets
 resource "aws_db_instance" "rds_mysql" {
-  db_name              = "mysql-db"
+  db_name              = "myrdsdb"
   allocated_storage    = 20
   engine               = "mysql"
   instance_class       = "db.t3.micro"
