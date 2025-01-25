@@ -17,15 +17,4 @@ terraform {
   }
 }
 
-# Remote Backend Configs 
-/* terraform {
- backend "remote" {
-    hostname = "app.terraform.io"
-    organization = "Stealth_Mode"
-
-    workspaces {
-      name = "my-luit-infra"
-    }
-  }
-} */
 
