@@ -1,7 +1,3 @@
-provider "aws" {
-  region = var.aws_region
-}
-
 # Create a Custom VPC
 resource "aws_vpc" "main_vpc" {
   cidr_block           = var.vpc_cidr
@@ -180,7 +176,9 @@ resource "aws_db_instance" "rds_mysql" {
   password             = var.db_password
   parameter_group_name = "default.mysql8.0"
   skip_final_snapshot  = true
-  db_subnet_group_name = aws_db_subnet_group.rds_subnet_group.name
+
+  db_subnet_group_name   = aws_db_subnet_group.rds_subnet_group.name
+  vpc_security_group_ids = [aws_security_group.rds_sg.id]
 }
 
 # Database subnet ground
@@ -191,4 +189,3 @@ resource "aws_db_subnet_group" "rds_subnet_group" {
     Name = "rds-subnet-group"
   }
 }
-
