@@ -1,9 +1,11 @@
 # Configure the AWS Provider
+provider "aws" {
+  region = var.aws_region
+}
 terraform {
   backend "remote" {
     hostname     = "app.terraform.io"
     organization = "Stealth_Mode"
-
     workspaces {
       name = "my-luit-infra"
     }
