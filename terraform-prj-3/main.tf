@@ -8,7 +8,7 @@ resource "aws_vpc" "main_vpc" {
   }
 }
 
-# Public Subnets
+# Create Public Subnets
 resource "aws_subnet" "public_subnet_1" {
   vpc_id                  = aws_vpc.main_vpc.id
   cidr_block              = var.sub_cidr_1
@@ -29,7 +29,7 @@ resource "aws_subnet" "public_subnet_2" {
   }
 }
 
-# Private Subnets for RDS
+# Create Private Subnets for RDS
 resource "aws_subnet" "private_subnet_1" {
   vpc_id            = aws_vpc.main_vpc.id
   cidr_block        = var.sub_cidr_3
@@ -79,7 +79,7 @@ resource "aws_route_table_association" "public_assoc_2" {
   route_table_id = aws_route_table.public_rt.id
 }
 
-# Security Group for Web Servers
+# Create Security Group for Web Servers
 resource "aws_security_group" "web_sg" {
   name        = "webserver-sg"
   description = "Allow HTTP and SSH traffic"
@@ -111,7 +111,7 @@ resource "aws_security_group" "web_sg" {
   }
 }
 
-# Security Group for RDS
+# Create Security Group for RDS
 resource "aws_security_group" "rds_sg" {
   name        = "database-sg"
   description = "Allow MySQL (3306) access from web server sg"
@@ -181,7 +181,7 @@ resource "aws_db_instance" "rds_mysql" {
   vpc_security_group_ids = [aws_security_group.rds_sg.id]
 }
 
-# Database subnet ground
+# Database subnet group
 resource "aws_db_subnet_group" "rds_subnet_group" {
   name       = "rds-subnet-group"
   subnet_ids = [aws_subnet.private_subnet_1.id, aws_subnet.private_subnet_2.id]
