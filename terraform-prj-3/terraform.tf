@@ -2,6 +2,7 @@
 provider "aws" {
   region = var.aws_region
 }
+# Remote Backend Configuration
 terraform {
   backend "remote" {
     hostname     = "app.terraform.io"
